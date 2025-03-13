@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,28 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
     <!-- This is the header section -->
     <header>
         <!-- This is the nav bar section -->
-        <nav>
-
+        <nav class="w-11/12 mx-auto flex justify-between items-center border-b-1 py-7 border-[#17171720]">
+            <div class="logo">
+                <img class="w-[120px]" src="assets/Logo.png" alt="">
+            </div>
+            <div class="sort">
+                <button class="btn bg-[#25252520]">Sort By View</button>
+            </div>
+            <div class="blogs">
+                <button class="btn text-white bg-[#FF1F3D]">Blogs</button>
+            </div>
         </nav>
     </header>
     <!-- This is the second nav bar section for category container -->
-    <nav>
-        
+    <nav id="category-container" class="flex justify-center py-8 gap-5">
+        <div>
+            <button class="btn btn-sm text-white bg-[#FF1F3D]">All</button>
+        </div>
     </nav>
     <!-- This is the main section -->
     <main>
@@ -27,4 +39,5 @@
     <!-- All scripts are linked here -->
     <script src="scripts/index.js"></script>
 </body>
+
 </html>
