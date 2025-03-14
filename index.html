@@ -24,7 +24,7 @@
             <div class="logo">
                 <img class="w-[120px]" src="assets/Logo.png" alt="">
             </div>
-            <div class="sort">
+            <div class="search">
                 <label class="input">
                     <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
@@ -34,9 +34,8 @@
                     </svg>
                     <input id="search-input" type="search" required placeholder="Search" />
                 </label>
-                <!-- <button class="btn bg-[#25252520]">Sort By View</button> -->
             </div>
-            <div class="blogs">
+            <div class="sort">
                 <button class="btn text-white bg-[#FF1F3D]">Sort By View</button>
             </div>
         </nav>
@@ -47,6 +46,9 @@
             <button id="btn-all" onclick="loadVideos()"class="btn btn-sm text-[#25252570] bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
         </div>
     </nav>
+
+    <section id="loader" class="text-center py-10 hidden"><span class="loading loading-dots loading-xl"></span></section>
+
     <!-- This is the main section -->
     <main>
         <section id="video-container" class="w-11/12 mx-auto grid grid-cols-4 gap-5">
