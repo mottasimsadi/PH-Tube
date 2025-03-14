@@ -8,6 +8,12 @@
     <!-- Daisy UI & Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .active{
+            background-color: #FF1F3D;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,13 +35,16 @@
     <!-- This is the second nav bar section for category container -->
     <nav id="category-container" class="flex justify-center py-8 gap-5">
         <div>
-            <button onclick="loadVideos()" class="btn btn-sm text-white bg-[#FF1F3D]">All</button>
+            <button id="btn-all" onclick="loadVideos()"class="btn btn-sm text-[#25252570] bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">All</button>
         </div>
     </nav>
     <!-- This is the main section -->
     <main>
         <section id="video-container" class="w-11/12 mx-auto grid grid-cols-4 gap-5">
-
+            <div class="col-span-full text center flex flex-col justify-center items-center py-20">
+                <img class="w-[120px]" src="assets/Icon.png" alt="">
+                <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
+            </div>
         </section>
     </main>
     <!-- All scripts are linked here -->

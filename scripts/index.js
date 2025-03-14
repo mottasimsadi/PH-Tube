@@ -1,3 +1,11 @@
+function removeActiveClass() {
+  const activeButtons = document.getElementsByClassName("active");
+  
+  for (let btn of activeButtons) {
+    btn.classList.remove("active");
+  }
+}
+
 function loadCategories() {
   // 1 - Fetch the data
   fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
@@ -10,7 +18,11 @@ function loadCategories() {
 function loadVideos() {
   fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then((response) => response.json())
-    .then((data) => displayVideos(data.videos));
+    .then((data) => {
+      removeActiveClass();
+      document.getElementById("btn-all").classList.add("active");
+      displayVideos(data.videos);
+    });
 }
 
 const loadCategoryVideos = (id) => {
@@ -18,7 +30,13 @@ const loadCategoryVideos = (id) => {
 
   fetch(url)
     .then((response) => response.json())
-    .then((data) => displayVideos(data.category));
+    .then((data) => {
+      removeActiveClass();
+      // No active class
+      const clickedButton = document.getElementById(`btn-${id}`);
+      clickedButton.classList.add("active");
+      displayVideos(data.category);
+    });
 };
 
 function displayCategories(categories) {
@@ -30,7 +48,7 @@ function displayCategories(categories) {
     // Create Element
     const categoryDiv = document.createElement("div");
     categoryDiv.innerHTML = `
-      <button onclick="loadCategoryVideos(${category.category_id})" class="btn btn-sm text-[#25252570] bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${category.category}</button>
+      <button id="btn-${category.category_id}" onclick="loadCategoryVideos(${category.category_id})" class="btn btn-sm text-[#25252570] bg-[#25252515] hover:bg-[#FF1F3D] hover:text-white">${category.category}</button>
       `;
     // Append the ELement
     categoryContainer.appendChild(categoryDiv);
@@ -39,7 +57,18 @@ function displayCategories(categories) {
 
 const displayVideos = (videos) => {
   const videoContainer = document.getElementById("video-container");
+
   videoContainer.innerHTML = "";
+
+  if (videos.length == 0) {
+    videoContainer.innerHTML = `
+    <div class="col-span-full text center flex flex-col justify-center items-center py-20">
+        <img class="w-[120px]" src="assets/Icon.png" alt="">
+        <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
+    </div>
+    `;
+  }
+
   videos.forEach((video) => {
     // Create Element
     const videoCard = document.createElement("div");
